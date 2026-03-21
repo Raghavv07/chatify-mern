@@ -8,9 +8,18 @@ import { ENV } from './env.js';
 const app: Application = express();
 const server: http.Server = http.createServer(app);
 
+const allowedOrigins = (ENV.CLIENT_URL || '')
+  .split(',')
+  .map((origin) => origin.trim())
+  .filter(Boolean);
+
+if (allowedOrigins.length === 0 && ENV.NODE_ENV !== 'production') {
+  allowedOrigins.push('http://localhost:5173');
+}
+
 const io = new Server(server, {
   cors: {
-    origin: [ENV.CLIENT_URL!],
+    origin: allowedOrigins.length > 0 ? allowedOrigins : true,
     credentials: true,
   },
 });
@@ -45,4 +54,3 @@ io.on('connection', (socket: Socket) => {
 });
 
 export { app, io, server };
-

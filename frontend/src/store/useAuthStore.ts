@@ -28,7 +28,10 @@ export const useAuthStore = create<AuthState>((set, get) => ({
       set({ authUser: res.data });
       get().connectSocket();
     } catch (error) {
-      console.log('Error in authCheck:', error);
+      const axiosError = error as AxiosError<ApiErrorResponse>;
+      if (axiosError.response?.status !== 401) {
+        console.log('Error in authCheck:', axiosError.response?.data || error);
+      }
       set({ authUser: null });
     } finally {
       set({ isCheckingAuth: false });

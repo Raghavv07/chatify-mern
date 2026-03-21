@@ -13,11 +13,30 @@ const __dirname = path.resolve();
 
 const PORT: number = parseInt(ENV.PORT || '3000', 10);
 
+const allowedOrigins = (ENV.CLIENT_URL || '')
+  .split(',')
+  .map((origin) => origin.trim())
+  .filter(Boolean);
+
+if (allowedOrigins.length === 0 && ENV.NODE_ENV !== 'production') {
+  allowedOrigins.push('http://localhost:5173');
+}
+
 // Render runs behind a reverse proxy; trust forwarded headers for correct client IP.
 app.set('trust proxy', 1);
 
 app.use(express.json({ limit: '5mb' })); // req.body
-app.use(cors({ origin: ENV.CLIENT_URL, credentials: true }));
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      if (allowedOrigins.length === 0) return callback(null, true);
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.includes(origin)) return callback(null, true);
+      return callback(new Error('CORS origin not allowed'));
+    },
+    credentials: true,
+  })
+);
 app.use(cookieParser());
 
 app.use('/api/auth', authRoutes);

@@ -9,6 +9,8 @@ export const generateToken = (userId: Types.ObjectId, res: Response): string => 
     throw new Error('JWT_SECRET is not configured');
   }
 
+  const isProduction = ENV.NODE_ENV === 'production';
+
   const token = jwt.sign({ userId: userId.toString() }, JWT_SECRET, {
     expiresIn: '7d',
   });
@@ -16,10 +18,10 @@ export const generateToken = (userId: Types.ObjectId, res: Response): string => 
   res.cookie('jwt', token, {
     maxAge: 7 * 24 * 60 * 60 * 1000, // MS
     httpOnly: true, // prevent XSS attacks: cross-site scripting
-    sameSite: 'strict', // CSRF attacks
-    secure: ENV.NODE_ENV === 'development' ? false : true,
+    // Render me frontend/backend alag domains ho sakte hain; production me None required hota hai.
+    sameSite: isProduction ? 'none' : 'lax',
+    secure: isProduction,
   });
 
   return token;
 };
-
