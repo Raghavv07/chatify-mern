@@ -13,6 +13,9 @@ const __dirname = path.resolve();
 
 const PORT: number = parseInt(ENV.PORT || '3000', 10);
 
+// Render runs behind a reverse proxy; trust forwarded headers for correct client IP.
+app.set('trust proxy', 1);
+
 app.use(express.json({ limit: '5mb' })); // req.body
 app.use(cors({ origin: ENV.CLIENT_URL, credentials: true }));
 app.use(cookieParser());
@@ -33,4 +36,3 @@ server.listen(PORT, () => {
   console.log('Server running on port: ' + PORT);
   connectDB();
 });
-
