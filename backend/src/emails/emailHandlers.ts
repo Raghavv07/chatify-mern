@@ -1,6 +1,6 @@
-import { createWelcomeEmailTemplate } from '../emails/emailTemplates';
-import { ENV } from '../lib/env';
-import { resendClient, sender } from '../lib/resend';
+import { createWelcomeEmailTemplate } from '../emails/emailTemplates.js';
+import { ENV } from '../lib/env.js';
+import { resendClient, sender } from '../lib/resend.js';
 
 export const sendWelcomeEmail = async (
   email: string,
@@ -27,3 +27,4 @@ export const sendWelcomeEmail = async (
 
   console.log('Welcome Email sent successfully', data);
 };
+

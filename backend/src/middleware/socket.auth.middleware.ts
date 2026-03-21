@@ -1,8 +1,8 @@
 import jwt from 'jsonwebtoken';
 import { Socket } from 'socket.io';
-import { ENV } from '../lib/env';
-import User from '../models/User';
-import { AuthenticatedSocket, DecodedToken } from '../types/index';
+import { ENV } from '../lib/env.js';
+import User from '../models/User.js';
+import { AuthenticatedSocket, DecodedToken } from '../types/index.js';
 
 export const socketAuthMiddleware = async (
   socket: Socket,
@@ -47,3 +47,4 @@ export const socketAuthMiddleware = async (
     next(new Error('Unauthorized - Authentication failed'));
   }
 };
+

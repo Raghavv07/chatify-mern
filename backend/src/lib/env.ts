@@ -1,5 +1,5 @@
 import 'dotenv/config';
-import { EnvironmentVariables } from '../types/index';
+import { EnvironmentVariables } from '../types/index.js';
 
 export const ENV: EnvironmentVariables = {
   PORT: process.env.PORT,
@@ -16,3 +16,4 @@ export const ENV: EnvironmentVariables = {
   ARCJET_KEY: process.env.ARCJET_KEY,
   ARCJET_ENV: process.env.ARCJET_ENV,
 };
+

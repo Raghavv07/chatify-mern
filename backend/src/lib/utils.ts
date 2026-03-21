@@ -1,7 +1,7 @@
 import { Response } from 'express';
 import jwt from 'jsonwebtoken';
 import { Types } from 'mongoose';
-import { ENV } from './env';
+import { ENV } from './env.js';
 
 export const generateToken = (userId: Types.ObjectId, res: Response): string => {
   const { JWT_SECRET } = ENV;
@@ -22,3 +22,4 @@ export const generateToken = (userId: Types.ObjectId, res: Response): string => 
 
   return token;
 };
+

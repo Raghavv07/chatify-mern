@@ -1,5 +1,5 @@
 import mongoose, { Model, Schema } from 'mongoose';
-import { IMessage } from '../types/index';
+import { IMessage } from '../types/index.js';
 
 const messageSchema = new Schema<IMessage>(
   {
@@ -28,3 +28,4 @@ const messageSchema = new Schema<IMessage>(
 const Message: Model<IMessage> = mongoose.model<IMessage>('Message', messageSchema);
 
 export default Message;
+

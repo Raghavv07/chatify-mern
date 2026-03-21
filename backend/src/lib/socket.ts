@@ -1,9 +1,9 @@
 import express, { Application } from 'express';
 import http from 'http';
 import { Server, Socket } from 'socket.io';
-import { socketAuthMiddleware } from '../middleware/socket.auth.middleware';
-import { AuthenticatedSocket, UserSocketMap } from '../types/index';
-import { ENV } from './env';
+import { socketAuthMiddleware } from '../middleware/socket.auth.middleware.js';
+import { AuthenticatedSocket, UserSocketMap } from '../types/index.js';
+import { ENV } from './env.js';
 
 const app: Application = express();
 const server: http.Server = http.createServer(app);
@@ -45,3 +45,4 @@ io.on('connection', (socket: Socket) => {
 });
 
 export { app, io, server };
+

@@ -1,8 +1,8 @@
 import express, { Request, Response, Router } from 'express';
-import { login, logout, signup, updateProfile } from '../controllers/auth.controller';
-import { arcjetProtection } from '../middleware/arcjet.middleware';
-import { protectRoute } from '../middleware/auth.middleware';
-import { AuthenticatedRequest } from '../types/index';
+import { login, logout, signup, updateProfile } from '../controllers/auth.controller.js';
+import { arcjetProtection } from '../middleware/arcjet.middleware.js';
+import { protectRoute } from '../middleware/auth.middleware.js';
+import { AuthenticatedRequest } from '../types/index.js';
 
 const router: Router = express.Router();
 
@@ -19,3 +19,4 @@ router.get('/check', protectRoute, (req: Request, res: Response) => {
 });
 
 export default router;
+

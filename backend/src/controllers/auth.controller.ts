@@ -1,11 +1,11 @@
 import bcrypt from 'bcryptjs';
 import { Request, Response } from 'express';
-import { sendWelcomeEmail } from '../emails/emailHandlers';
-import cloudinary from '../lib/cloudinary';
-import { ENV } from '../lib/env';
-import { generateToken } from '../lib/utils';
-import User from '../models/User';
-import { AuthenticatedRequest, LoginBody, SignupBody, UpdateProfileBody } from '../types/index';
+import { sendWelcomeEmail } from '../emails/emailHandlers.js';
+import cloudinary from '../lib/cloudinary.js';
+import { ENV } from '../lib/env.js';
+import { generateToken } from '../lib/utils.js';
+import User from '../models/User.js';
+import { AuthenticatedRequest, LoginBody, SignupBody, UpdateProfileBody } from '../types/index.js';
 
 export const signup = async (req: Request, res: Response): Promise<void | Response> => {
   const { fullName, email, password } = req.body as SignupBody;
@@ -119,3 +119,4 @@ export const updateProfile = async (req: Request, res: Response): Promise<void |
     res.status(500).json({ message: 'Internal server error' });
   }
 };
+

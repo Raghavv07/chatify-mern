@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { ENV } from './env';
+import { ENV } from './env.js';
 
 export const connectDB = async (): Promise<void> => {
   try {
@@ -13,3 +13,4 @@ export const connectDB = async (): Promise<void> => {
     process.exit(1); // 1 status code means fail, 0 means success
   }
 };
+

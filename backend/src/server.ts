@@ -3,11 +3,11 @@ import cors from 'cors';
 import express, { Response } from 'express';
 import path from 'path';
 
-import { connectDB } from './lib/db';
-import { ENV } from './lib/env';
-import { app, server } from './lib/socket';
-import authRoutes from './routes/auth.route';
-import messageRoutes from './routes/message.route';
+import { connectDB } from './lib/db.js';
+import { ENV } from './lib/env.js';
+import { app, server } from './lib/socket.js';
+import authRoutes from './routes/auth.route.js';
+import messageRoutes from './routes/message.route.js';
 
 const __dirname = path.resolve();
 
@@ -33,3 +33,4 @@ server.listen(PORT, () => {
   console.log('Server running on port: ' + PORT);
   connectDB();
 });
+

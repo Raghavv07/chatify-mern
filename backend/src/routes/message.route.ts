@@ -4,9 +4,9 @@ import {
   getChatPartners,
   getMessagesByUserId,
   sendMessage,
-} from '../controllers/message.controller';
-import { arcjetProtection } from '../middleware/arcjet.middleware';
-import { protectRoute } from '../middleware/auth.middleware';
+} from '../controllers/message.controller.js';
+import { arcjetProtection } from '../middleware/arcjet.middleware.js';
+import { protectRoute } from '../middleware/auth.middleware.js';
 
 const router: Router = express.Router();
 
@@ -20,3 +20,4 @@ router.get('/:id', getMessagesByUserId);
 router.post('/send/:id', sendMessage);
 
 export default router;
+

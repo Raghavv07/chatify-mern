@@ -1,6 +1,6 @@
 import { isSpoofedBot } from '@arcjet/inspect';
 import { NextFunction, Request, Response } from 'express';
-import aj from '../lib/arcjet';
+import aj from '../lib/arcjet.js';
 
 export const arcjetProtection = async (
   req: Request,
@@ -36,3 +36,4 @@ export const arcjetProtection = async (
     next();
   }
 };
+

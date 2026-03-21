@@ -1,8 +1,8 @@
 import { NextFunction, Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
-import { ENV } from '../lib/env';
-import User from '../models/User';
-import { AuthenticatedRequest, DecodedToken } from '../types/index';
+import { ENV } from '../lib/env.js';
+import User from '../models/User.js';
+import { AuthenticatedRequest, DecodedToken } from '../types/index.js';
 
 export const protectRoute = async (
   req: Request,
@@ -32,3 +32,4 @@ export const protectRoute = async (
     res.status(500).json({ message: 'Internal server error' });
   }
 };
+

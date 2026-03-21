@@ -1,9 +1,9 @@
 import { Request, Response } from 'express';
-import cloudinary from '../lib/cloudinary';
-import { getReceiverSocketId, io } from '../lib/socket';
-import Message from '../models/Message';
-import User from '../models/User';
-import { AuthenticatedRequest, SendMessageBody } from '../types/index';
+import cloudinary from '../lib/cloudinary.js';
+import { getReceiverSocketId, io } from '../lib/socket.js';
+import Message from '../models/Message.js';
+import User from '../models/User.js';
+import { AuthenticatedRequest, SendMessageBody } from '../types/index.js';
 
 export const getAllContacts = async (req: Request, res: Response): Promise<void | Response> => {
   try {
@@ -113,3 +113,4 @@ export const getChatPartners = async (req: Request, res: Response): Promise<void
     res.status(500).json({ error: 'Internal server error' });
   }
 };
+
