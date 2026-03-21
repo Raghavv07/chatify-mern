@@ -7,6 +7,8 @@ export const arcjetProtection = async (
   res: Response,
   next: NextFunction
 ): Promise<void | Response> => {
+  if (!aj) return next();
+
   try {
     const decision = await aj.protect(req);
 
@@ -36,4 +38,3 @@ export const arcjetProtection = async (
     next();
   }
 };
-
