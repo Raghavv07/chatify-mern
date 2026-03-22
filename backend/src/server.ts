@@ -19,6 +19,7 @@ const PORT: number = parseInt(ENV.PORT || '3000', 10);
 const allowedOrigins = (ENV.CLIENT_URL || '')
   .split(',')
   .map((origin) => origin.trim())
+  .map((origin) => (/^https?:\/\//i.test(origin) ? origin : `https://${origin}`))
   .filter(Boolean);
 
 if (allowedOrigins.length === 0 && ENV.NODE_ENV !== 'production') {

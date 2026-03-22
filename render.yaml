@@ -28,7 +28,7 @@ services:
         fromService:
           type: web
           name: chatify-frontend
-          property: url
+          property: host
       - key: RESEND_API_KEY
         value: REPLACE_WITH_RESEND_API_KEY
       - key: EMAIL_FROM
@@ -67,9 +67,9 @@ services:
         fromService:
           type: web
           name: chatify-backend
-          property: url
+          property: host
       - key: VITE_SOCKET_URL
         fromService:
           type: web
           name: chatify-backend
-          property: url
+          property: host

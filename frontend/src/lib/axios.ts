@@ -1,7 +1,9 @@
 import axios from 'axios';
 
 const configuredApiUrl = (import.meta.env.VITE_API_URL || '').trim();
-const normalizedApiUrl = configuredApiUrl.replace(/\/$/, '');
+const withProtocol = (url: string): string =>
+  /^https?:\/\//i.test(url) ? url : `https://${url}`;
+const normalizedApiUrl = configuredApiUrl ? withProtocol(configuredApiUrl).replace(/\/$/, '') : '';
 const resolvedApiUrl =
   normalizedApiUrl && !normalizedApiUrl.endsWith('/api')
     ? `${normalizedApiUrl}/api`

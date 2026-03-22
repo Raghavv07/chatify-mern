@@ -13,8 +13,11 @@ import {
 } from '../types';
 
 const configuredSocketUrl = (import.meta.env.VITE_SOCKET_URL || '').trim().replace(/\/$/, '');
+const withProtocol = (url: string): string =>
+  /^https?:\/\//i.test(url) ? url : `https://${url}`;
 const BASE_URL =
-  configuredSocketUrl || (import.meta.env.MODE === 'development' ? 'http://localhost:3000' : '/');
+  (configuredSocketUrl ? withProtocol(configuredSocketUrl) : '') ||
+  (import.meta.env.MODE === 'development' ? 'http://localhost:3000' : '/');
 
 export const useAuthStore = create<AuthState>((set, get) => ({
   authUser: null,
