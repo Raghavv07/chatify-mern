@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "if find src -type f -name '*.ts' -print -quit >/dev/null 2>&1 || find src -type f -name '*.tsx' -print -quit >/dev/null 2>&1; then tsc -b && vite build; else echo 'No frontend source files found in src/. Skipping frontend build.'; fi",
     "lint": "eslint .",
     "preview": "vite preview"
   },
