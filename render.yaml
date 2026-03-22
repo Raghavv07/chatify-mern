@@ -1,3 +1,9 @@
+# Replace placeholder values below with your real credentials before production use.
+#
+# Auto-wired by blueprint:
+# CLIENT_URL, VITE_API_URL, VITE_SOCKET_URL
+#
+# Note: Render injects PORT automatically at runtime for web services.
 services:
   - type: web
     name: chatify-backend
@@ -12,31 +18,29 @@ services:
         value: 20
       - key: NODE_ENV
         value: production
-      - key: PORT
-        sync: false
       - key: MONGO_URI
-        sync: false
+        value: REPLACE_WITH_MONGO_URI
       - key: JWT_SECRET
-        sync: false
+        value: REPLACE_WITH_JWT_SECRET
       - key: CLIENT_URL
         fromService:
           type: web
           name: chatify-frontend
           property: url
       - key: RESEND_API_KEY
-        sync: false
+        value: REPLACE_WITH_RESEND_API_KEY
       - key: EMAIL_FROM
-        sync: false
+        value: REPLACE_WITH_EMAIL_FROM
       - key: EMAIL_FROM_NAME
-        sync: false
+        value: REPLACE_WITH_EMAIL_FROM_NAME
       - key: CLOUDINARY_CLOUD_NAME
-        sync: false
+        value: REPLACE_WITH_CLOUDINARY_CLOUD_NAME
       - key: CLOUDINARY_API_KEY
-        sync: false
+        value: REPLACE_WITH_CLOUDINARY_API_KEY
       - key: CLOUDINARY_API_SECRET
-        sync: false
+        value: REPLACE_WITH_CLOUDINARY_API_SECRET
       - key: ARCJET_KEY
-        sync: false
+        value: REPLACE_WITH_ARCJET_KEY
       - key: ARCJET_ENV
         value: production
 
@@ -47,7 +51,7 @@ services:
     rootDir: frontend
     buildCommand: npm install --include=dev && npm run build
     staticPublishPath: dist
-    pullRequestPreviewsEnabled: true
+    pullRequestPreviewsEnabled: false
     routes:
       - type: rewrite
         source: /*
@@ -55,6 +59,8 @@ services:
     envVars:
       - key: NODE_VERSION
         value: 20
+      - key: NODE_ENV
+        value: production
       - key: VITE_API_URL
         fromService:
           type: web
