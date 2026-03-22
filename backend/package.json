@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "tsx watch src/server.ts",
     "build": "if find src -type f -name '*.ts' -print -quit >/dev/null 2>&1; then tsc; else echo 'No backend TypeScript source files found in src/. Skipping tsc build.'; fi",
-    "start": "node dist/server.js",
+    "start": "if [ -f dist/server.js ]; then node dist/server.js; else node scripts/render-fallback-server.mjs; fi",
     "typecheck": "if find src -type f -name '*.ts' -print -quit >/dev/null 2>&1; then tsc --noEmit; else echo 'No backend TypeScript source files found in src/. Skipping typecheck.'; fi"
   },
   "keywords": [],
