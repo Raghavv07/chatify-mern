@@ -12,7 +12,9 @@ import {
   UpdateProfileData,
 } from '../types';
 
-const BASE_URL = import.meta.env.MODE === 'development' ? 'http://localhost:3000' : '/';
+const configuredSocketUrl = (import.meta.env.VITE_SOCKET_URL || '').trim().replace(/\/$/, '');
+const BASE_URL =
+  configuredSocketUrl || (import.meta.env.MODE === 'development' ? 'http://localhost:3000' : '/');
 
 export const useAuthStore = create<AuthState>((set, get) => ({
   authUser: null,
