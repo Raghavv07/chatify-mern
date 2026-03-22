@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 # Replace placeholder values below with your real credentials before production use.
+=======
+# Required manual secrets for backend service:
+# MONGO_URI, JWT_SECRET, RESEND_API_KEY, EMAIL_FROM, EMAIL_FROM_NAME,
+# CLOUDINARY_CLOUD_NAME, CLOUDINARY_API_KEY, CLOUDINARY_API_SECRET, ARCJET_KEY
+>>>>>>> cdf545f (..)
 #
 # Auto-wired by blueprint:
 # CLIENT_URL, VITE_API_URL, VITE_SOCKET_URL
